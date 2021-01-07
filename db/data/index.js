@@ -3,7 +3,7 @@ const ENV = process.env.NODE_ENV || "development";
 const contactsData = require("./contacts");
 
 const data = {
-  development: contactsData,
+  // development: contactsData,
   production: contactsData,
 };
 module.exports = data[ENV];
