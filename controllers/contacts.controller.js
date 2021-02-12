@@ -16,7 +16,7 @@ exports.getAllContacts = (req, res, next) => {
 exports.postNewContacts = (req, res, next) => {
   postContact(req.body)
     .then((contact) => {
-      res.json(contact);
+      res.send({ contact });
     })
     .catch((err) => {
       next(err);

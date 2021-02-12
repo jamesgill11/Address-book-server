@@ -1,13 +1,7 @@
 const knex = require("../db/connection.js");
 
 exports.fetchAllContacts = () => {
-  return knex
-    .select("*")
-    .from("contacts")
-    .returning("*")
-    .then((res) => {
-      return res;
-    });
+  return knex.select("*").from("contacts");
 };
 
 exports.postContact = (newContact) => {
