@@ -18,7 +18,7 @@ const customConfig = {
   },
   test: {
     connection: {
-      database: "a",
+      database: "address_book",
     },
   },
   production: {

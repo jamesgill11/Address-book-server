@@ -1,4 +1,4 @@
-const { contactsData } = require("../data/index");
+const contactsData = require("../data/index");
 
 exports.seed = function (knex) {
   return knex.migrate

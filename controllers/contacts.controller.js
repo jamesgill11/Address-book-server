@@ -8,11 +8,9 @@ const {
 exports.getAllContacts = (req, res, next) => {
   fetchAllContacts()
     .then((contact) => {
-      res.json(contact);
+      res.send({ contact });
     })
-    .catch((err) => {
-      next(err);
-    });
+    .catch(next);
 };
 
 exports.postNewContacts = (req, res, next) => {
