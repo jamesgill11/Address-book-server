@@ -11,6 +11,7 @@ contactsRouter
   .get(getAllContacts)
   .post(postNewContacts)
   .patch(patchContact)
-  .delete(deleteContact);
+  .delete(deleteContact)
+  .all("*");
 
 module.exports = contactsRouter;

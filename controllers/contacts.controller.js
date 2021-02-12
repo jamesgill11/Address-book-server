@@ -27,7 +27,7 @@ exports.patchContact = (req, res, next) => {
   const { id, first_name, last_name, phone, email } = req.body;
   patchAContact(id, first_name, last_name, phone, email)
     .then((contact) => {
-      res.json({ msg: "Contact Updated", contact });
+      res.send({ msg: "Contact Updated", contact });
     })
     .catch((err) => {
       next(err);
