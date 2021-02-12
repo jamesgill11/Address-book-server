@@ -22,7 +22,6 @@ exports.postContact = (newContact) => {
 };
 
 exports.patchAContact = (id, first_name, last_name, phone, email) => {
-  console.log(id);
   return knex("contacts")
     .where("id", "=", id)
     .modify((input) => {
@@ -31,8 +30,7 @@ exports.patchAContact = (id, first_name, last_name, phone, email) => {
     })
     .returning("*")
     .then((res) => {
-      const [updatedChild] = res;
-      return updatedChild;
+      return res[0];
     });
 };
 
