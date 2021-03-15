@@ -31,13 +31,15 @@ exports.patchAContact = (id, first_name, last_name, phone, email) => {
     })
     .returning("*")
     .then((res) => {
-      return res[0];
+      if (res.length === 0) {
+        return Promise.reject({ status: 404, msg: "404 Error: Not Found" });
+      }
+      const [updatedContact] = res;
+      return updatedContact;
     });
 };
 
 exports.removeContact = (id) => {
-  console.log("in model");
-  console.log(id);
   return knex("contacts")
     .where("id", id)
     .del()

@@ -12,10 +12,13 @@ contactsRouter
   .route("/")
   .get(getAllContacts)
   .post(postNewContacts)
-  .patch(patchContact)
-  // .delete(deleteContact)
   .all(handle405Errors);
 
-contactsRouter.route("/:id").get(getSingleContact).delete(deleteContact);
+contactsRouter
+  .route("/:id")
+  .get(getSingleContact)
+  .delete(deleteContact)
+  .patch(patchContact)
+  .all(handle405Errors);
 
 module.exports = contactsRouter;

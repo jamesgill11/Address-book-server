@@ -25,7 +25,8 @@ exports.postNewContacts = (req, res, next) => {
 };
 
 exports.patchContact = (req, res, next) => {
-  const { id, first_name, last_name, phone, email } = req.body;
+  const { id } = req.params;
+  const { first_name, last_name, phone, email } = req.body;
   patchAContact(id, first_name, last_name, phone, email)
     .then((contact) => {
       res.send({ msg: "Contact Updated", contact });
@@ -36,9 +37,7 @@ exports.patchContact = (req, res, next) => {
 };
 
 exports.deleteContact = (req, res, next) => {
-  console.log("in controller");
   const { id } = req.params;
-  console.log(id);
   removeContact(id)
     .then(() => {
       res.sendStatus(204);
@@ -50,7 +49,6 @@ exports.deleteContact = (req, res, next) => {
 
 exports.getSingleContact = (req, res, next) => {
   const { id } = req.params;
-
   fetchSingleContact(id)
     .then((contact) => {
       res.send({ contact });
