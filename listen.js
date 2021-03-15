@@ -1,4 +1,3 @@
-// const { PORT = 9090 } = process.env;
 const app = require("./app");
 app.listen(process.env.PORT || 3000, function () {
   console.log(

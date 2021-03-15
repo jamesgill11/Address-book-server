@@ -8,7 +8,7 @@ app.use(cors());
 app.use(express.json());
 app.use("/api", apiRouter);
 
-app.all("/*", (req, res, next) => {
+app.all("*", (req, res, next) => {
   next({ status: 404, msg: "Route not found" });
 });
 
