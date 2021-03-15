@@ -17,7 +17,8 @@ exports.postContact = (newContact) => {
     .into("contacts")
     .returning("*")
     .then((result) => {
-      return result;
+      const [newContact] = result;
+      return newContact;
     });
 };
 
