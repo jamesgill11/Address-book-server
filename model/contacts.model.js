@@ -35,12 +35,23 @@ exports.patchAContact = (id, first_name, last_name, phone, email) => {
 };
 
 exports.removeContact = (id) => {
+  console.log("in model");
+  console.log(id);
   return knex("contacts")
     .where("id", id)
     .del()
     .then((res) => {
       if (res === 0)
         return Promise.reject({ status: 404, msg: "404 Error: Not Found" });
+      return res;
+    });
+};
+
+exports.fetchSingleContact = (id) => {
+  return knex("contacts")
+    .where("id", id)
+    .returning("*")
+    .then((res) => {
       return res;
     });
 };

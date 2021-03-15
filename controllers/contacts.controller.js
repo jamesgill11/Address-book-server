@@ -3,6 +3,7 @@ const {
   postContact,
   patchAContact,
   removeContact,
+  fetchSingleContact,
 } = require("../model/contacts.model");
 
 exports.getAllContacts = (req, res, next) => {
@@ -35,10 +36,24 @@ exports.patchContact = (req, res, next) => {
 };
 
 exports.deleteContact = (req, res, next) => {
-  const { id } = req.body;
+  console.log("in controller");
+  const { id } = req.params;
+  console.log(id);
   removeContact(id)
     .then(() => {
       res.sendStatus(204);
+    })
+    .catch((err) => {
+      next(err);
+    });
+};
+
+exports.getSingleContact = (req, res, next) => {
+  const { id } = req.params;
+
+  fetchSingleContact(id)
+    .then((contact) => {
+      res.send({ contact });
     })
     .catch((err) => {
       next(err);

@@ -4,6 +4,7 @@ const {
   patchContact,
   postNewContacts,
   deleteContact,
+  getSingleContact,
 } = require("../controllers/contacts.controller");
 const { handle405Errors } = require("../error_handlers/index");
 
@@ -12,7 +13,9 @@ contactsRouter
   .get(getAllContacts)
   .post(postNewContacts)
   .patch(patchContact)
-  .delete(deleteContact)
+  // .delete(deleteContact)
   .all(handle405Errors);
+
+contactsRouter.route("/:id").get(getSingleContact).delete(deleteContact);
 
 module.exports = contactsRouter;
